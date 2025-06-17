@@ -9,10 +9,13 @@ class File:
         self.file_name = file_name
         self.create_or_not = create_or_not
         self.writing_content = writing_content
-        if create_or_not == True:
-            self.create()
-            if writing_content != "":
-                self.write(text = writing_content)
+        try:
+            self.read()
+        except:
+            if create_or_not == True:
+                self.create()
+                if writing_content != "":
+                    self.write(text = writing_content)
                 
     def create(self):
         with open(self.file_name, 'w') as my_file:
